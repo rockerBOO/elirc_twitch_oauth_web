@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OAuth2/Phoenix!</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">OAuth2 Twitch</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="https://github.com/rockerBOO/oauth2_twitch">
+              <i class="fa fa-github"></i>
+              View on GitHub
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <span class="logo"></span>
+      <h2>OAuth2 Twitch</h2>
+      <p class="lead">
+        This is an application to show an example of how to wire up
+        <a href="https://github.com/scrogson/oauth2">OAuth2</a> with
+        <a href="http://twitch.tv">Twitch</a>.
+      </p>
+
+  
+
+    <!-- %{"_id" => 93569778, "_links" => %{"self" => "https://api.twitch.tv/kraken/users/elircbot"}, "bio" => "I am a bot. I only exist in the dark spaces of the CPU.", "created_at" => "2015-06-15T06:08:38Z", "display_name" => "ElircBot", "email" => nil, "logo" => nil, "name" => "elircbot", "notifications" => %{"email" => true, "push" => false}, "partnered" => false, "type" => "user", "updated_at" => "2015-06-19T15:08:32Z"} -->
+      <%= if @current_user do %>
+        <h2>Welcome, <%= @current_user["display_name"] %>!</h2>
+      <% else %>
+        <br>
+        <br>
+
+        <a class="btn btn-primary btn-lg" href="/auth">
+          <i class="fa fa-github"></i>
+          Sign in with Twitch.tv
+        </a>
+      <% end %>
+    </div>
+
+    <div class="container-fluid">
+      <%= @inner %>
+    </div>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"</script>
+    <script>require("/web/static/app")</script>
+  </body>
+</html>
